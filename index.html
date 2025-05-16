@@ -1,17 +1,26 @@
-<!DOCTYPE html> <html> <head> <meta charset="utf-8"> <meta http-equiv="Content-Type" content="text/html"> <meta name="keywords" content="GitHubGameOff"> <title>BIT BRAWLER - A Beat 'Em Up Game</title> <meta name="description" content="An exciting beat 'em up game where you fight your way through waves of enemies"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="apple-mobile-web-app-capable" content="yes"> <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"> <script>
-        // Immediate referrer check before any other scripts load
-        (function() {
-            const allowedReferrer = 'app.baes.so';
-            const referrer = document.referrer;
-            
-            if (!referrer || !referrer.includes(allowedReferrer)) {
-                // Prevent any further script execution
-                document.write('Access denied. This application can only be accessed through app.baes.so');
-                window.stop();
-                throw new Error('Unauthorized access');
-            }
-        })();
-    </script> <style> body {
+<!DOCTYPE html> <html> <head> <meta charset="utf-8"> <meta http-equiv="Content-Type" content="text/html"> <meta name="keywords" content="GitHubGameOff"> <title>BIT BRAWLER - A Beat 'Em Up Game</title> <meta name="description" content="An exciting beat 'em up game where you fight your way through waves of enemies"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="apple-mobile-web-app-capable" content="yes"> <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"> 
+<script>
+  (function() {
+      // List all allowed referrer hosts here
+      const allowedReferrers = [
+        'app.baes.so',
+        'baes.so',
+        'bario.so'
+      ];
+
+      const referrer = document.referrer;
+      const isAllowed = allowedReferrers.some(host => referrer.includes(host));
+
+      if (!referrer || !isAllowed) {
+          document.write(
+            'Access denied. This application can only be accessed through approved domains'
+          );
+          window.stop();
+          throw new Error('Unauthorized access');
+      }
+  })();
+</script>
+        <style> body {
       padding: 0;
       margin: 0;
       width: 100vw;
